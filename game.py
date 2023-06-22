@@ -7,6 +7,8 @@ class Game
 	self.win_state = "Ongoing"
 	self.min_players = min_players
 	self.max_players = max_players
+	self.players = []
+	self.player_names = []
 
     def reindex(self):
 	for i in range(len(players)):
