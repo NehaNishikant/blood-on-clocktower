@@ -19,7 +19,7 @@ class Player:
 		self.morality = "Good"
 	elif role in ["Poisoner", "Spy", "Scarlet Woman", "Baron"]:
 		self.roleType = "Minion"
-		self.morality = "Bad"
+		self.morality = "Evil"
 	else:
 		self.roleType = "Demon"
-		self.morality = "Bad"
+		self.morality = "Evil"
