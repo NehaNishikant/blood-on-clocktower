@@ -35,13 +35,13 @@ class Game
         assert(len(self.players) == len(self.playerNames))
 
         player, playerName = newPlayer(len(players, message="Enter the name of the first player")
-        self..players.append(player)
-        self..playerNames.append(playerName)
+        self.players.append(player)
+        self.playerNames.append(playerName)
 
         while (len(self.players) < self.min_players):
             player, playerName = newPlayer(len(players))
-            self..players.append(player)
-            self..playerNames.append(playerName)
+            self.players.append(player)
+            self.playerNames.append(playerName)
 
         more_players = utils.getAorB("Are there more players?")
         while (more_players == "Y"):
@@ -69,6 +69,8 @@ class Game
 	        if (len(self.players) == 0):
 		    print("No more players left to remove")
 		    players_leaving = "N"
+		else:
+		    players_leaving = utils.getAorB("Are any more players leaving?")
 
     def dayPhase(self):
 	pass
@@ -76,12 +78,12 @@ class Game
     def nightPhase(self):
 	pass
 
-    def discloseHistory(self): // once the self.ends, go through and disclose what happened
+    def discloseHistory(self): # once the self.ends, go through and disclose what happened
 	pass
 
     def winMessage(self):
 	print("Congratulations to the ", self.winState, " team.")
-	// print roles
+	# print roles
 	self.discloseHistory()
 
     def run(self):
