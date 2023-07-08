@@ -1,5 +1,5 @@
 const { 
-    Game, 
+    Blood_on_ClockTower, 
     JOIN_PARTICIPANTS,
     NIGHT_PHASE,
     DAY_PHASE,
@@ -42,7 +42,7 @@ client.on('message', async message => {
             game.join_phase_to_night_phase()
             players_string_to_print = game.string_player_names()
             console.log(players_string_to_print)
-            // send to everyone - create function send blast
+            // TODO send to everyone - create function send blast
             client.sendMessage( message.from, players_string_to_print)
             // for each player, send them these instructions
             client.sendMessage( message.from, "Please vote by sending a message with \"vote yes\" or \"vote no \"")

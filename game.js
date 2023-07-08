@@ -5,7 +5,7 @@ const VOTING_PHASE = 3
 const MIN_PLAYERS = 5 // TODO: fill in real values
 const MAX_PLAYERS = 15 // TODO: fill in real values
 
-class Game {
+class Blood_on_ClockTower {
     constructor(name = "Blood on ClockTower") {
         this.name = name
         this.players = new Map()
@@ -60,7 +60,7 @@ class Game {
   }
   
 module.exports = { 
-    Game, 
+    Blood_on_ClockTower, 
     JOIN_PARTICIPANTS,
     NIGHT_PHASE,
     DAY_PHASE,
