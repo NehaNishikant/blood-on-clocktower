@@ -58,7 +58,7 @@ class Multimap{
     delete(key_name, key){
         assert(this.map_contains_key(this.data, key_name), "key name not in schema")
         keys = get(key_name, key, true)
-        delete_given_all_keys(keys)
+        this.delete_given_all_keys(keys)
     }
 
     delete_given_all_keys(keys){
