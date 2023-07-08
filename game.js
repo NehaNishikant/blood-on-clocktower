@@ -8,20 +8,47 @@ const MAX_PLAYERS = 15 // TODO: fill in real values
 class Blood_on_ClockTower {
     constructor(name = "Blood on ClockTower") {
         this.name = name
-        this.players = new Map()
+        this.primary_keys = ["name", "index", "role"] // todo: are these the correct pks?
+        this.players = new Multimap(this.primary_keys) 
         // game starts in join phase
         this.game_state = JOIN_PARTICIPANTS
     }
   
     add_player(player_name, extra_info = null) {
         // can only happen if we are in join phase
-        const player_info = new Map()
-        player_info.set("extra_info", extra_info)
-        this.players.set(player_name,player_info)
+
+        if (this.game_state == JOIN_PARTICIPANTS){
+            let message = None
+
+            if (this.players.keys().includes(player_name)){
+                message = "Overwriting player " + player_name
+            }
+    
+            const player = new Player(player_name, extra_info)
+            const keys = new Map()
+            for (const key of this.primary_keys){
+                keys.set(key, player.key)
+            }
+            this.players.set(keys, player)
+
+        } else {
+            message = "You can only remove players during the Join phase."
+        }
+
+        return message
     }
 
-    remove_player(name) {
-        // can only happen if we are in join phase
+    remove_player(player_name) {
+        let message = None
+
+        if (this.game_state == JOIN_PARTICIPANTS){
+            player = this.players.get("name", player_name)
+            this.players.remove(player)
+        } else {
+            message = "You can only remove players during the Join phase."
+        }
+        
+        return message
     }
 
     string_player_names() {

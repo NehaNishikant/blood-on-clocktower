@@ -1,0 +1,32 @@
+class Multimap{
+
+    constructor([primary keys]){
+
+    }
+
+    add_row ()
+
+}
+
+
+
+
+a = new Map()
+a.set("name", "Krati")
+a.set("id", 0)
+a.set("number", 6502292171)
+a.set("address", "90 West St")
+
+b= new Map()
+b.set("name", "Krati")
+b.set("id", 0)
+b.set("number", 6502292171)
+b.set("address", "90 West St")
+
+{name: rehgweq, object: aesgrhge, number: 6502292171, }
+
+dic[name][new guy ]
+
+
+
+
