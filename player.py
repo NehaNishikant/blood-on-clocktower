@@ -6,6 +6,7 @@ class Player:
 		self.idx = idx
 		self.power_remaining = True
 		self.alive = True
+		self.dead_vote_remaining = True
 
 	def setRole(self, role):
 		self.role = role
@@ -23,3 +24,8 @@ class Player:
 		else:
 			self.roleType = "Demon"
 			self.morality = "Evil"
+
+	def vote():
+		# remove dead vote if not alive and if dead vote exists?
+		# pass if cannot vote?
+		pass

@@ -2,12 +2,14 @@ from player import Player
 from game import Game
 import utils
 
-def run():
+def run(players):
 	print("Welcome to Blood on Clocktower")
 
 	game = Game()
 	print("The min players for this game is ", game.min_players, " and the max is ", game.max_players, ". You have ", len(game.players), " players so far.")
-	game.addPlayers()
+	
+	for player in players:
+		game.addPlayers(player)
 
 	game.setup()
 	game.run() 
@@ -22,4 +24,5 @@ def run():
 	print("Thank you for playing.")
 	return
 
-run()
+players = [ "Krati", "Neha", "Shaan", "Armando"]
+run(players)

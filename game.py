@@ -2,14 +2,23 @@ from player import Player
 import utils
 import os
 
-class Game:
+## constants
+JOIN_PARTICIPANTS = 0
+NIGHT_PHASE = 1
+DAY_PHASE = 2
+MIN_PLAYERS = 5 ##TODO: fill in real values
+MAX_PLAYERS = 15 ## TODO: fill in real values
 
-	def __init__(self, min_players=2, max_players=4): # todo: fill in real values
+class Game:
+	
+	def __init__(self):
 		self.win_state = "Ongoing"
-		self.min_players = min_players
-		self.max_players = max_players
-		self.players = []
-		self.player_names = []
+		self.players = dict()
+		self.game_stage = JOIN_PARTICIPANTS
+		self.initialize_whatsapp_bot()
+
+	def initialize_whatsapp_bot(self):
+		
 
 	def reindex(self):
 		for i in range(len(self.players)):

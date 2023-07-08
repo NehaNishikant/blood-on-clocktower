@@ -1,0 +1,11 @@
+add summary of game rules as a whatsapp text to the person once they join the game
+add list of characters as well as a whatsapp text message that is sent if you query 'what characters' or something
+add list of strategies for a character?? more in depth detail about someone's character if they text some trigger to the bot 
+restructure/make things clear
+have good documentation / list of steps so it is clear what everyone needs to do?
+add timers for voting/day phase/nominations?
+not sure whether to put the print statements in game.js or run.js -- in the future do we want the run.js file to be able to run multiple game objects??? idk lol so many design qs
+should we change it to one function: 'switch phase' which takes in from and to??? idkkkkk that might allow illegal arguments bc you cant swtich from, say, join phase to day phase
+how should we do nominations and phase switching. any person typing it is enough? should we dedicate someone to be the host and they type to trigger these things? should we make it automatic/timer/night phase ends when last person gives info?/join phase ends when desired number of inputted players is reached?
+
+change it to index by chat id instead of name (and then another map by name) so that we enforce only one players from one phone or it messes up the interaction later
