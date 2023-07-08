@@ -9,3 +9,5 @@ should we change it to one function: 'switch phase' which takes in from and to??
 how should we do nominations and phase switching. any person typing it is enough? should we dedicate someone to be the host and they type to trigger these things? should we make it automatic/timer/night phase ends when last person gives info?/join phase ends when desired number of inputted players is reached?
 
 change it to index by chat id instead of name (and then another map by name) so that we enforce only one players from one phone or it messes up the interaction later
+
+update javascript and make some functions private
