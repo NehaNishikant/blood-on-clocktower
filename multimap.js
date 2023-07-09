@@ -47,7 +47,7 @@ class Multimap {
             key_info.set("keys", keys)
             key_info.set("value", value)
             
-            key = 
+            key = kets.
             key_indexed_data.set(key, key_info)
         }
     }

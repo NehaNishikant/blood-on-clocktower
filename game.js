@@ -8,13 +8,13 @@ const MAX_PLAYERS = 15 // TODO: fill in real values
 class Blood_on_ClockTower {
     constructor(name = "Blood on ClockTower") {
         this.name = name
-        this.primary_keys = ["name", "index", "role"] // todo: are these the correct pks?
+        this.primary_keys = ["name"] // todo: are these the correct pks?
         this.players = new Multimap(this.primary_keys) 
         // game starts in join phase
         this.game_state = JOIN_PARTICIPANTS
     }
   
-    add_player(player_name, extra_info = null) {
+    async add_player(player_name, extra_info = null) {
         // can only happen if we are in join phase
 
         if (this.game_state == JOIN_PARTICIPANTS){
@@ -61,6 +61,17 @@ class Blood_on_ClockTower {
     }
 
     join_phase_to_night_phase() {
+        // index players 
+        idx_map = new Map()
+        counter = 0
+        
+        for (const name of this.players.keys("name")){
+            idx_map.set(name, counter)
+            counter = counter + 1
+        }
+        this.players.add_key_name("name", "index", idx_map)
+        this.primary_keys.push("index")
+
         // move into night phase
         this.game_state = NIGHT_PHASE
     } 
