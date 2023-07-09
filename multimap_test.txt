@@ -1,14 +1,3 @@
-class Multimap{
-
-    constructor([primary keys]){
-
-    }
-
-    add_row ()
-
-}
-
-
 
 
 a = new Map()

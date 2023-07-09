@@ -27,7 +27,7 @@ client.on('message', async message => {
     if( game.game_state == JOIN_PARTICIPANTS ) {
         // add participant
         if( message.body.toLowerCase().startsWith("add") ) {
-            player_name = message.body.slice(4)
+            const player_name = message.body.slice(4)
             const extra_info = new Map()
             extra_info.set("chat", message.from)
             game.add_player(player_name, extra_info)
