@@ -52,7 +52,7 @@ class Multimap{
     get(key_name, key, get_keys = false){
         assert(this.map_contains_key(this.data, key_name), "key name not in schema")
         result = this.data.get(key_name).get(key)
-        if(get_other_keys) return result.get("keys")
+        if(get_keys) return result.get("keys")
         else return result.get("value")
     }
 
@@ -73,7 +73,7 @@ class Multimap{
     add_key_name(key_name, new_key_name, new_keys){
         new_key_indexed_data = new Map()
         key_indexed_data = this.data.get(key_name)
-        for (const key of key_indexed_data){
+        for (const key of key_indexed_data.keys()){
             value = this.get(key_name, key)
             new_key = new_keys.get(key)
             new_key_indexed_data.set(new_key, value)
