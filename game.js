@@ -15,8 +15,6 @@ class Blood_on_ClockTower {
     }
   
     async add_player(player_name, extra_info = null) {
-        // can only happen if we are in join phase
-
         if (this.game_state == JOIN_PARTICIPANTS){
             let message = None
 
