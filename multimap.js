@@ -43,12 +43,12 @@ class Multimap {
         key_names = this.data.keys()
         for (const key_name of key_names){
             key_indexed_data = this.data.get(key_name)
+            key = keys.get(key_name)
+            key_indexed_data.set(key, key_info)
+
             key_info = new Map()
             key_info.set("keys", keys)
             key_info.set("value", value)
-            
-            key = kets.
-            key_indexed_data.set(key, key_info)
         }
     }
 

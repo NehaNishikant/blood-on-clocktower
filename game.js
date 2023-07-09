@@ -8,7 +8,7 @@ const MAX_PLAYERS = 15 // TODO: fill in real values
 class Blood_on_ClockTower {
     constructor(name = "Blood on ClockTower") {
         this.name = name
-        this.players = new Multimap() 
+        this.players = new Multimap(["name"]) 
         // game starts in join phase
         this.game_state = JOIN_PARTICIPANTS
     }
