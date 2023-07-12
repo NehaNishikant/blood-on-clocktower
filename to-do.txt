@@ -11,3 +11,5 @@ how should we do nominations and phase switching. any person typing it is enough
 change it to index by chat id instead of name (and then another map by name) so that we enforce only one players from one phone or it messes up the interaction later
 
 update javascript and make some functions private
+
+make multimap cleaner and add more private subroutines

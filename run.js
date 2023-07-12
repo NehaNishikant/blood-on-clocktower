@@ -56,4 +56,4 @@ client.on('message', async message => {
  
 client.initialize();
 
-const game = new Game()
+const game = new Blood_on_ClockTower()

@@ -9,6 +9,7 @@ class Blood_on_ClockTower {
     constructor(name = "Blood on ClockTower") {
         this.name = name
         this.players = new Multimap(["name"]) 
+        this.player_order = null
         // game starts in join phase
         this.game_state = JOIN_PARTICIPANTS
     }
@@ -59,6 +60,13 @@ class Blood_on_ClockTower {
         return(message)
     }
 
+    get_player_order() {
+        if( this.player_order === null ) {
+            // players have not been assigned order yet (how are we dealing with this message?)
+        }
+        return(this.player_order)
+    }
+
     join_phase_to_night_phase() {
         // index players 
         idx_map = new Map()
@@ -67,10 +75,10 @@ class Blood_on_ClockTower {
         for (const name of this.players.keys("name")){
             idx_map.set(name, counter)
             counter = counter + 1
+            // add idx to player object attributes
         }
         this.players.add_key_name("name", "index", idx_map)
-        this.primary_keys.push("index")
-
+        this.player_order = idx_map
         // move into night phase
         this.game_state = NIGHT_PHASE
     } 

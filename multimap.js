@@ -58,6 +58,10 @@ class Multimap {
         else return result.get("value")
     }
 
+    get_submap(key_name1, key_name2 = null, value = null) {
+        return
+    }
+
     delete(key_name, key){
         assert(this.map_contains_key(this.data, key_name), "key name not in schema")
         keys = get(key_name, key, true)
@@ -72,50 +76,43 @@ class Multimap {
         })
     }
 
-    add_key_name(key_name, new_key_name, new_keys) {
-        new_key_indexed_data = new Map()
-        key_indexed_data = this.data.get(key_name)
-
-        let keys = new Map()
-        for (const key of key_indexed_data.keys()){ // for each obj
-            new_key = new_keys.get(key)
-
-            // insert keys into old key infos
-            other_keys = this.get(new_key_name, new_key, true) // other keys of the object (dict)
-            for( const other_key_name of other_keys.keys() ) {
-                value_other_keys = this.data.get(other_key_name).get("keys")
-                value_other_keys.set(new_key_name, new_key)
+    add_key_name(given_key_name, new_key_name, new_keys) {
+        this.map_contains_key(this.data, given_key_name)
+        const given_key_indexed_data = this.data.get(given_key_name)
+        this.keys_match(given_key_indexed_data, new_keys)
+        
+        for( const key_name of this.data.keys()) {
+            const key_indexed_data = this.data.get(key_name)
+            for( const given_key of new_keys ) {
+                const key = given_key_indexed_data.get(given_key).get("keys").get(key_name)
+                const value = key_indexed_data.get(key)
+                const keys = value.get("keys")
+                keys.set(new_key_name, new_keys.get(given_key))
+                value.set("keys", keys)
+                key_indexed_data.set(key, value)
             }
-
-
-            // create new key name for all objs // thos is all messed up 
-            const value = this.get(key_name, key)
-            let x = new Map()
-            x.set("value", value)
-            
-            for (const other_key_name of this.data.keys()){
-                value_other_key = 
-                keys.set(other_key_name, value_other_key)
-            }
-            x.set("keys", keys)
-            new_key_indexed_data.set("key_info", x)
         }
-
+        const new_key_indexed_data = new Map()
+        for( const given_key of new_keys ) {
+            const key = new_keys.get(given_key)
+            const value = given_key_indexed_data.get(given_key)
+            new_key_indexed_date.set(key, value)
+        }
         this.data.set(new_key_name, new_key_indexed_data)
     }
 
-    add_key_name_given_all_keys(keys, new_key_name){
-        this.data.keys() 
-        for (const key_name of this.data.keys()){
-            const key = keys.get(key_name)
+    remove_key_name(given_key_name){
+        this.data.remove(given_key_name)
+        for( const key_name of this.data.keys()) {
             const key_indexed_data = this.data.get(key_name)
-            keys = key_indexed_data.get("keys")
-            keys.set(_, )
+            for( const key of key_indexed_data.keys() ) {
+                const value = key_indexed_data.get(key)
+                const keys = value.get("keys")
+                keys.remove(given_key_name)
+                value.set("keys", keys)
+                key_indexed_data.set(key, value)
+            }
         }
     }
-
-    remove_key_name(key_name){
-        this.data.get(key_name).keys().forEach(this.data.get(key_name).remove(keys))
-        this.data.remove(key_name)
-    }
 }
+
