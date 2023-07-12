@@ -116,3 +116,6 @@ class Multimap {
     }
 }
 
+module.exports = {
+    Multimap
+}
