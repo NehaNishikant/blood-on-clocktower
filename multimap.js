@@ -45,7 +45,9 @@ class Multimap {
         this.assert_keys_match(this.data, keys)
 
         key_names = this.data.keys()
+        console.log("key names ", key_names)
         for (const key_name of key_names){
+            console.log("key name ", key_name)
             key_indexed_data = this.data.get(key_name)
             key = keys.get(key_name)
             key_indexed_data.set(key, key_info)
