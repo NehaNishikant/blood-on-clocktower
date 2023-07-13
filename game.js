@@ -10,6 +10,7 @@ const Multimap = require('./multimap.js')
 class Blood_on_ClockTower {
     constructor(name = "Blood on ClockTower") {
         this.name = name
+        this.primary_keys = ["name"]
         this.players = new Multimap(["name"]) 
         this.player_order = null
         // game starts in join phase
