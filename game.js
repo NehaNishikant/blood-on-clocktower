@@ -4,8 +4,8 @@ const DAY_PHASE = 2
 const VOTING_PHASE = 3
 const MIN_PLAYERS = 5 // TODO: fill in real values
 const MAX_PLAYERS = 15 // TODO: fill in real values
-const Player = require('./player.js')
-const Multimap = require('./multimap.js')
+const { Player } = require('./player.js')
+const { Multimap } = require('./multimap.js')
 
 class Blood_on_ClockTower {
     constructor(name = "Blood on ClockTower") {
@@ -20,7 +20,7 @@ class Blood_on_ClockTower {
         // can only happen if we are in join phase
 
         if (this.game_state == JOIN_PARTICIPANTS){
-            let message = None
+            let message = ""
 
             if (this.players.keys().includes(player_name)){
                 message = "Overwriting player " + player_name
@@ -41,7 +41,7 @@ class Blood_on_ClockTower {
     }
 
     remove_player(player_name) {
-        let message = None
+        let message = ""
 
         if (this.game_state == JOIN_PARTICIPANTS){
             player = this.players.get("name", player_name)
