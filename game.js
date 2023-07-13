@@ -25,7 +25,7 @@ class Blood_on_ClockTower {
 
             console.log(this.players)
             console.log(this.players.keys("name"))
-            if (this.players.keys().includes(player_name)){
+            if (this.players.keys("name").includes(player_name)){
                 message = "Overwriting player " + player_name
             }
     
