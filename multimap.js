@@ -6,6 +6,8 @@
  * for get, we take in a key (and associated key name) and by default return the value indexed by the given key. But if you set the optional boolean "get_keys" to be true, we will instead give you all the keys associated with value indexed by the given key
  */
 
+var assert = require('assert')
+
 class Multimap {
     constructor(schema){
         this.data = new Map()
