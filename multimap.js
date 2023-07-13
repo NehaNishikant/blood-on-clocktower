@@ -24,7 +24,7 @@ class Multimap {
     }
 
     assert_map_contains_key(map, key) {
-        assert(map.has(key), "key name" + key_name + "not in schema")
+        assert(map.has(key), "key name" + key + "not in schema")
     }
 
     keys(key_name) {
