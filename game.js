@@ -23,6 +23,8 @@ class Blood_on_ClockTower {
         if (this.game_state == JOIN_PARTICIPANTS){
             let message = ""
 
+            console.log(this.players)
+            console.log(this.players.keys("name"))
             if (this.players.keys().includes(player_name)){
                 message = "Overwriting player " + player_name
             }

@@ -1,4 +1,6 @@
-.wwebjs_auth
-.wwebjs_cache
+/.wwebjs_auth
+/.wwebjs_cache
 .DS_Store
 ngrok-v3-stable-darwin-arm64.zip.
+/node_modules
+__pycache__

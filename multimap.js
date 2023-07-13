@@ -28,12 +28,12 @@ class Multimap {
     }
 
     keys(key_name) {
-        this.assert_map_contains_key(this.map, key_name)
+        this.assert_map_contains_key(this.data, key_name)
         return this.data.get(key_name).keys()
     }
 
     has(key_name, key) {
-        this.assert_map_contains_key(this.map, key_name)
+        this.assert_map_contains_key(this.data, key_name)
         return this.data.get(key_name).has(key)
     }
 
@@ -56,7 +56,7 @@ class Multimap {
     }
 
     get(key_name, key, get_keys = false){
-        this.assert_map_contains_key(this.map, key_name)
+        this.assert_map_contains_key(this.data, key_name)
         result = this.data.get(key_name).get(key)
         if(get_keys) return result.get("keys")
         else return result.get("value")
@@ -67,7 +67,7 @@ class Multimap {
     }
 
     delete(key_name, key){
-        this.assert_map_contains_key(this.map, key_name)
+        this.assert_map_contains_key(this.data, key_name)
         keys = get(key_name, key, true)
         this.delete_given_all_keys(keys)
     }
@@ -82,7 +82,7 @@ class Multimap {
     }
 
     add_key_name(given_key_name, new_key_name, new_keys) {
-        this.assert_map_contains_key(this.map, given_key_name)
+        this.assert_map_contains_key(this.data, given_key_name)
         const given_key_indexed_data = this.data.get(given_key_name)
         this.assert_keys_match(given_key_indexed_data, new_keys)
         
@@ -107,7 +107,7 @@ class Multimap {
     }
 
     remove_key_name(given_key_name){
-        this.assert_map_contains_key(this.map, given_key_name)
+        this.assert_map_contains_key(this.data, given_key_name)
         this.data.remove(given_key_name)
         for( const key_name of this.data.keys()) {
             const key_indexed_data = this.data.get(key_name)
