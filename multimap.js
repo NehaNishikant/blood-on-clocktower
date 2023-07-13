@@ -59,9 +59,13 @@ class Multimap {
 
     get(key_name, key, get_keys = false){
         this.assert_map_contains_key(this.data, key_name)
-        const result = this.data.get(key_name).get(key)
-        if(get_keys) return result.get("keys")
-        else return result.get("value")
+        const key_indexed_data = this.data.get(key_name)
+        if (key_indexed_data.has(key)){
+            const result = this.data.get(key_name).get(key)
+            if (get_keys) return result.get("keys")
+            else return result.get("value")
+        }
+        return null
     }
 
     get_submap(key_name1, key_name2 = null, value = null) {
@@ -70,12 +74,12 @@ class Multimap {
 
     delete(key_name, key){
         this.assert_map_contains_key(this.data, key_name)
-        const keys = get(key_name, key, true)
+        const keys = this.get(key_name, key, true)
         this.delete_given_all_keys(keys)
     }
 
     delete_given_all_keys(keys){
-        this.data.keys().forEach((key_name) => {
+        Array.from(this.data.keys()).forEach((key_name) => {
             const key = keys.get(key_name)
             const key_indexed_data = this.data.get(key_name)
             assert(key_indexed_data.has(key), "map doesn't have " + key)
@@ -90,7 +94,7 @@ class Multimap {
         
         for( const key_name of this.data.keys()) {
             const key_indexed_data = this.data.get(key_name)
-            for( const given_key of new_keys ) {
+            for( const given_key of new_keys.keys() ) {
                 const key = given_key_indexed_data.get(given_key).get("keys").get(key_name)
                 const value = key_indexed_data.get(key)
                 const keys = value.get("keys")
@@ -100,23 +104,23 @@ class Multimap {
             }
         }
         const new_key_indexed_data = new Map()
-        for( const given_key of new_keys ) {
+        for( const given_key of new_keys.keys() ) {
             const key = new_keys.get(given_key)
             const value = given_key_indexed_data.get(given_key)
-            new_key_indexed_date.set(key, value)
+            new_key_indexed_data.set(key, value)
         }
         this.data.set(new_key_name, new_key_indexed_data)
     }
 
     remove_key_name(given_key_name){
         this.assert_map_contains_key(this.data, given_key_name)
-        this.data.remove(given_key_name)
+        this.data.delete(given_key_name)
         for( const key_name of this.data.keys()) {
             const key_indexed_data = this.data.get(key_name)
             for( const key of key_indexed_data.keys() ) {
                 const value = key_indexed_data.get(key)
                 const keys = value.get("keys")
-                keys.remove(given_key_name)
+                keys.delete(given_key_name)
                 value.set("keys", keys)
                 key_indexed_data.set(key, value)
             }
