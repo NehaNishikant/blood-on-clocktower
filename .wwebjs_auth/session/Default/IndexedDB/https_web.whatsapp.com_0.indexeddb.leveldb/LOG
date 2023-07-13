@@ -1,3 +1,27 @@
-2023/07/08-15:01:18.084 ac03 Reusing MANIFEST /Users/kratijain/Documents/GitHub/blood-on-clocktower/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/07/08-15:01:18.085 ac03 Recovering log #272
-2023/07/08-15:01:18.105 ac03 Reusing old log /Users/kratijain/Documents/GitHub/blood-on-clocktower/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000272.log 
+2023/07/12-21:02:37.580 b403 Reusing MANIFEST /Users/kratijain/Documents/GitHub/blood-on-clocktower/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/07/12-21:02:37.581 b403 Recovering log #329
+2023/07/12-21:02:37.646 b403 Reusing old log /Users/kratijain/Documents/GitHub/blood-on-clocktower/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000329.log 
+2023/07/12-21:02:55.031 1ef03 Level-0 table #341: started
+2023/07/12-21:02:55.078 1ef03 Level-0 table #341: 1095975 bytes OK
+2023/07/12-21:02:55.119 1ef03 Delete type=0 #329
+2023/07/12-21:02:55.129 b403 Compacting 1@1 + 8@2 files
+2023/07/12-21:02:55.219 b403 Generated table #342@1: 67951 keys, 2265030 bytes
+2023/07/12-21:02:55.296 b403 Generated table #343@1: 17625 keys, 2177721 bytes
+2023/07/12-21:02:55.367 b403 Generated table #344@1: 2821 keys, 2154261 bytes
+2023/07/12-21:02:55.427 b403 Generated table #345@1: 4385 keys, 2151430 bytes
+2023/07/12-21:02:55.515 b403 Generated table #346@1: 33103 keys, 2257767 bytes
+2023/07/12-21:02:55.602 b403 Generated table #347@1: 21979 keys, 2187448 bytes
+2023/07/12-21:02:55.714 b403 Generated table #348@1: 83521 keys, 2228813 bytes
+2023/07/12-21:02:55.817 b403 Generated table #349@1: 102886 keys, 2254792 bytes
+2023/07/12-21:02:55.843 b403 Generated table #350@1: 5413 keys, 136696 bytes
+2023/07/12-21:02:55.844 b403 Compacted 1@1 + 8@2 files => 17813958 bytes
+2023/07/12-21:02:55.900 b403 compacted to: files[ 0 0 9 0 0 0 0 ]
+2023/07/12-21:02:55.902 b403 Delete type=2 #338
+2023/07/12-21:02:55.902 b403 Delete type=2 #341
+2023/07/12-21:02:55.902 b403 Delete type=2 #335
+2023/07/12-21:02:55.902 b403 Delete type=2 #334
+2023/07/12-21:02:55.902 b403 Delete type=2 #336
+2023/07/12-21:02:55.902 b403 Delete type=2 #337
+2023/07/12-21:02:55.902 b403 Delete type=2 #333
+2023/07/12-21:02:55.903 b403 Delete type=2 #332
+2023/07/12-21:02:55.903 b403 Delete type=2 #331
