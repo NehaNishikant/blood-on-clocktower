@@ -5,6 +5,7 @@ const VOTING_PHASE = 3
 const MIN_PLAYERS = 5 // TODO: fill in real values
 const MAX_PLAYERS = 15 // TODO: fill in real values
 const Player = require('./player.js')
+const Multimap = require('./multimap.js')
 
 class Blood_on_ClockTower {
     constructor(name = "Blood on ClockTower") {
