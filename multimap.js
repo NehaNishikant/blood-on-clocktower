@@ -17,19 +17,19 @@ class Multimap {
     }
 
     assert_keys_match(map1, map2) {
-        result = true
-        map1.keys().forEach(key_name => { result = result && map2.has(key_name)});
-        map2.keys().forEach(key_name => { result = result && map1.has(key_name)});
-        assert(result, "keys don't match schema. keys: " + map2.keys().toString + " versus schema: " + map1.keys())
+        let result = true
+        Array.from(map1.keys()).forEach(key_name => { result = result && map2.has(key_name)});
+        Array.from(map2.keys()).forEach(key_name => { result = result && map1.has(key_name)});
+        assert(result, "keys don't match schema. keys: " + Array.from(map2.keys()).toString + " versus schema: " + map1.keys())
     }
 
     assert_map_contains_key(map, key) {
-        assert(map.has(key), "key name" + key + "not in schema")
+        assert(map.has(key), "key name " + key + " not in schema")
     }
 
     keys(key_name) {
         this.assert_map_contains_key(this.data, key_name)
-        return this.data.get(key_name).keys()
+        return Array.from(this.data.get(key_name).keys())
     }
 
     has(key_name, key) {
@@ -44,20 +44,21 @@ class Multimap {
     set(keys, value){
         this.assert_keys_match(this.data, keys)
 
-        key_names = this.data.keys()
+        const key_names = Array.from(this.data.keys())
         for (const key_name of key_names){
-            key_indexed_data = this.data.get(key_name)
-            key = keys.get(key_name)
-            key_indexed_data.set(key, key_info)
-            key_info = new Map()
+            const key_indexed_data = this.data.get(key_name)
+            const key = keys.get(key_name)
+            const key_info = new Map()
             key_info.set("keys", keys)
             key_info.set("value", value)
+            key_indexed_data.set(key, key_info)
+            this.data.set(key_name, key_indexed_data)
         }
     }
 
     get(key_name, key, get_keys = false){
         this.assert_map_contains_key(this.data, key_name)
-        result = this.data.get(key_name).get(key)
+        const result = this.data.get(key_name).get(key)
         if(get_keys) return result.get("keys")
         else return result.get("value")
     }
@@ -68,7 +69,7 @@ class Multimap {
 
     delete(key_name, key){
         this.assert_map_contains_key(this.data, key_name)
-        keys = get(key_name, key, true)
+        const keys = get(key_name, key, true)
         this.delete_given_all_keys(keys)
     }
 

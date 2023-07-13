@@ -20,12 +20,12 @@ class Blood_on_ClockTower {
     async add_player(player_name, extra_info = null) {
         // can only happen if we are in join phase
 
+        let message = ""
         if (this.game_state == JOIN_PARTICIPANTS){
-            let message = ""
 
             console.log(this.players)
             console.log(this.players.keys("name"))
-            if (this.players.keys("name").includes(player_name)){
+            if ((this.players.keys("name")).includes(player_name)){
                 message = "Overwriting player " + player_name
             }
     
