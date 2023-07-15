@@ -23,29 +23,36 @@ client.on('ready', async () => {
 });
 
 client.on('message', async message => {
-    //console.log(message)
+    console.log(message)
+    const message_body = message.body.toLowerCase()
     if( game.game_state == JOIN_PARTICIPANTS ) {
         // add participant
-        if( message.body.toLowerCase().startsWith("add") ) {
+        if( message_body.startsWith("add") ) {
             const player_name = message.body.slice(4)
-            const extra_info = new Map()
-            extra_info.set("chat", message.from)
-            game.add_player(player_name, extra_info)
+            const runner_info = new Map()
+            runner_info.set("chat", message.from)
+            game.add_player(player_name, runner_info)
         }
         // remove participant
-        if( message.body.toLowerCase().startsWith("remove") ) {
+        if( message_body.startsWith("remove") ) {
             player_name = message.body.slice(7)
             game.remove_player(player_name)
         }
         // end join participants phase
-        if( message.body.toLowerCase() === "end join phase" ) { // && message is from one of the players
-            game.join_phase_to_night_phase()
-            players_string_to_print = game.string_player_names()
-            console.log(players_string_to_print)
-            // TODO send to everyone - create function send blast
-            client.sendMessage( message.from, players_string_to_print)
-            // for each player, send them these instructions
-            client.sendMessage( message.from, "Please vote by sending a message with \"vote yes\" or \"vote no \"")
+        if( message_body === "end join phase" ) { 
+
+            if (game.has_player("chat", message.from)){ // && message is from one of the players
+                game.join_phase_to_night_phase()
+                players_string_to_print = game.string_player_names()
+                console.log(players_string_to_print)
+                // TODO send to everyone - create function send blast
+                for (chat_info in game.get_player_runner_info()["chat"]){
+                    client.sendMessage( chat_info, players_string_to_print)
+                    // for each player, send them these instructions
+                    client.sendMessage( message.from, "Please vote by sending a message with \"vote yes\" or \"vote no \"")
+                }
+            }
+
         }
     }
     if( game.game_state == VOTING_PHASE ) // and message is from one of the players
@@ -56,4 +63,4 @@ client.on('message', async message => {
  
 client.initialize();
 
-const game = new Blood_on_ClockTower()
+const game = new Blood_on_ClockTower("Blood on Clocktower", ["chat"])

@@ -1,9 +1,9 @@
-/* Creates a map indexable by multiple keys 
- * To set, we ask for multiple keys and a value
- * keys are identified by key names so we ask for keys as a Map of key name to key
+/* Creates a map indexable by keys of multiple types, where the list of types is the schema
  * key name schema must be set upon construction and keys must always follow the schema
  * the schema can change with add/remove key name
- * for get, we take in a key (and associated key name) and by default return the value indexed by the given key. But if you set the optional boolean "get_keys" to be true, we will instead give you all the keys associated with value indexed by the given key
+ * Keys for each type must be unique, but can overlap for different types 
+ * To set, we ask for a keys for each key type and a value
+ * keys are identified by key names so we ask for keys as a Map of key name to key
  */
 
 var assert = require('assert')
@@ -57,6 +57,9 @@ class Multimap {
         }
     }
 
+    /* for get, we take in a key (and associated key name) and by default return the value indexed 
+    by the given key. But if you set the optional boolean "get_keys" to be true, we will instead 
+    give you all the keys associated with value indexed by the given key */ 
     get(key_name, key, get_keys = false){
         this.assert_map_contains_key(this.data, key_name)
         const key_indexed_data = this.data.get(key_name)
@@ -68,8 +71,25 @@ class Multimap {
         return null
     }
 
-    get_submap(key_name1, key_name2 = null, value = null) {
-        return
+    // get_submap(key_name1, key_name2 = null, value = null) {
+    //     return
+    // }
+
+    get_submap(key_names) {
+        const submap = new Map()
+        for (const key_name of key_names){
+            submap[key_name] = this.get_all_keyname(key_name)
+        }
+        return submap
+    }
+
+    get_all_keyname(key_name) {
+        const key_data = new Map()
+        const key_indexed_data = this.data.get(key_name)
+        for (const key of key_indexed_data.keys()){
+            key_data.set(key, key_indexed_data.get(key).get("value"))
+        }
+        return key_data
     }
 
     delete(key_name, key){

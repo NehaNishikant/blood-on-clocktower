@@ -8,16 +8,18 @@ const { Player } = require('./player.js')
 const { Multimap } = require('./multimap.js')
 
 class Blood_on_ClockTower {
-    constructor(name = "Blood on ClockTower") {
+    constructor(name = "Blood on ClockTower", runner_info_keys = null) {
         this.name = name
-        this.primary_keys = ["name"]
+        this.primary_keys = ["name"] + runner_info_keys
         this.players = new Multimap(["name"]) 
         this.player_order = null
         // game starts in join phase
         this.game_state = JOIN_PARTICIPANTS
+        this.runner_info_keys = runner_info_keys
     }
   
-    async add_player(player_name, extra_info = null) {
+    // extra info is passed in from the runner
+    async add_player(player_name, runner_info = null) {
         // can only happen if we are in join phase
 
         let message = ""
@@ -29,10 +31,13 @@ class Blood_on_ClockTower {
                 message = "Overwriting player " + player_name
             }
     
-            const player = new Player(player_name, extra_info)
+            const player = new Player(player_name, runner_info)
             const keys = new Map()
             for (const key of this.primary_keys){
                 keys.set(key, player.key)
+            }
+            for (const key of runner_info){
+                keys.set(key, runner_info.key)
             }
             this.players.set(keys, player)
 
@@ -105,6 +110,14 @@ class Blood_on_ClockTower {
 
     end_game() {
 
+    }
+
+    has_player(indentifier, key){
+        return this.players.has(indentifier, key)
+    }
+
+    get_player_runner_info(){
+        return this.players.get_submap(this.runner_info_keys)
     }
 
   }
